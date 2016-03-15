@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     .dividerHeight(0)
                     .gradientDivider(false)
                     .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
-                    .show("http://uet.vnu.edu.vn/~chauttm/e-books/java/Effective.Java.2nd.Edition.May.2008.3000th.Release.pdf");
+                    .show("https://www.cs.umd.edu/class/fall2007/cmsc433/lectures/TS-2689.pdf");
         } else if (view.getId() == R.id.blackTheme) {
             new FinestWebView.Builder(this)
                     .theme(R.style.FinestWebViewTheme)

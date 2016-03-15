@@ -37,6 +37,10 @@ public class CustomSwipeToRefresh extends SwipeRefreshLayout {
             this.webView = (WebView) child;
     }
 
+    public void setWebView(WebView webView) {
+        this.webView = webView;
+    }
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
         return webView.getScrollY() <= scrollBuffer && super.onInterceptTouchEvent(event);

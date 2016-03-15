@@ -52,6 +52,7 @@ import com.thefinestartist.finestwebview.helpers.ColorHelper;
 import com.thefinestartist.finestwebview.helpers.TypefaceHelper;
 import com.thefinestartist.finestwebview.helpers.UrlParser;
 import com.thefinestartist.finestwebview.listeners.BroadCastManager;
+import com.thefinestartist.finestwebview.views.CustomSwipeToRefresh;
 import com.thefinestartist.finestwebview.views.ShadowLayout;
 import com.thefinestartist.utils.service.ClipboardManagerUtil;
 import com.thefinestartist.utils.ui.DisplayUtil;
@@ -370,7 +371,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
     protected AppCompatImageButton forward;
     protected AppCompatImageButton more;
 
-    protected SwipeRefreshLayout swipeRefreshLayout;
+    protected CustomSwipeToRefresh swipeRefreshLayout;
     protected WebView webView;
 
     protected View gradient;
@@ -409,7 +410,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
         forward = (AppCompatImageButton) findViewById(R.id.forward);
         more = (AppCompatImageButton) findViewById(R.id.more);
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout = (CustomSwipeToRefresh) findViewById(R.id.swipeRefreshLayout);
 
         gradient = findViewById(R.id.gradient);
         divider = findViewById(R.id.divider);
@@ -433,6 +434,8 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
         webLayout = (FrameLayout) findViewById(R.id.webLayout);
         webView = new WebView(this);
         webLayout.addView(webView);
+
+        swipeRefreshLayout.setWebView(webView);
     }
 
     protected void layoutViews() {
@@ -1041,7 +1044,13 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             BroadCastManager.onPageStarted(FinestWebViewActivity.this, key, url);
             if (!url.contains("docs.google.com") && url.endsWith(".pdf")) {
-                webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + url);
+                swipeRefreshLayout.setEnabled(showSwipeRefreshLayout);
+//                webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + url);
+                webView.loadUrl("http://docs.google.com/viewerng/viewer?url=" + url);
+            } else if (url.contains("docs.google.com") && url.endsWith(".pdf")) {
+                swipeRefreshLayout.setEnabled(false);
+            } else {
+                swipeRefreshLayout.setEnabled(showSwipeRefreshLayout);
             }
         }
 

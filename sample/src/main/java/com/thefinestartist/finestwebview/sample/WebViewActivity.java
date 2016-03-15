@@ -14,6 +14,6 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.webview);
         WebView webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://docs.google.com/gview?embedded=true&url=uet.vnu.edu.vn/~chauttm/e-books/java/Effective.Java.2nd.Edition.May.2008.3000th.Release.pdf");
+        webView.loadUrl("http://docs.google.com/gview?embedded=true&url=https://www.cs.umd.edu/class/fall2007/cmsc433/lectures/TS-2689.pdf");
     }
 }
