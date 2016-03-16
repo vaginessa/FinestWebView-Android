@@ -1,8 +1,10 @@
 package com.thefinestartist.finestwebview.views;
 
 import android.content.Context;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
@@ -41,8 +43,9 @@ public class CustomSwipeToRefresh extends SwipeRefreshLayout {
         this.webView = webView;
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent event) {
-        return webView.getScrollY() <= scrollBuffer && super.onInterceptTouchEvent(event);
-    }
+//    @Override
+//    public boolean onInterceptTouchEvent(MotionEvent event) {
+//        Log.e("CustomSwipeToRefresh", "onInterceptTouchEvent");
+//        return webView.getScrollY() <= scrollBuffer && super.onInterceptTouchEvent(event);
+//    }
 }

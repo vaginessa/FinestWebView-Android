@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 
-import com.thefinestartist.finestwebview.FinestWebView;
+import com.thefinestartist.finestwebview.FinestWebViewBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,10 +18,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         if (view.getId() == R.id.defaultTheme) {
-            new FinestWebView.Builder(this)
+            new FinestWebViewBuilder.Builder(this)
                     .titleDefault("The Finest Artist")
 //                    .show("http://thefinestartist.com");
 //                    .toolbarScrollFlags(0)
+                    .showDivider(true)
+                    .gradientDivider(false)
+                    .showMenuFind(true)
                     .webViewJavaScriptEnabled(true)
                     .webViewUseWideViewPort(false)
                     .show("http://andrewliu.in/2016/01/30/聊聊Redis的订阅发布/");
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 //                    .injectJavaScript("javascript: document.getElementById('msg').innerHTML='Hello " + "TheFinestArtist" + "!';")
 //                    .show("http://www.blessthisstuff.com");
         } else if (view.getId() == R.id.blueTheme) {
-            new FinestWebView.Builder(this)
+            new FinestWebViewBuilder.Builder(this)
                     .theme(R.style.FinestWebViewTheme)
                     .titleDefault("Vimeo")
                     .showUrl(false)
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
                     .show("https://www.cs.umd.edu/class/fall2007/cmsc433/lectures/TS-2689.pdf");
         } else if (view.getId() == R.id.blackTheme) {
-            new FinestWebView.Builder(this)
+            new FinestWebViewBuilder.Builder(this)
                     .theme(R.style.FinestWebViewTheme)
                     .titleDefault("Dribbble")
                     .toolbarScrollFlags(0)

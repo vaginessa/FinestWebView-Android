@@ -218,7 +218,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
                 a.getResourceId(6, 0) : R.drawable.selector_light_theme;
         a.recycle();
 
-        FinestWebView.Builder builder = (FinestWebView.Builder) intent.getSerializableExtra("builder");
+        FinestWebViewBuilder.Builder builder = (FinestWebViewBuilder.Builder) intent.getSerializableExtra("builder");
 
         key = builder.key;
 
@@ -437,6 +437,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
         webLayout.addView(webView);
 
         swipeRefreshLayout.setWebView(webView);
+        swipeRefreshLayout.setNestedScrollingEnabled(true);
     }
 
     protected void layoutViews() {
