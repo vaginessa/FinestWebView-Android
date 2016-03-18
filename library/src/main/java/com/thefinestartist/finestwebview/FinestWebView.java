@@ -34,6 +34,8 @@ public class FinestWebView extends RelativeLayout {
 
     private void bindView() {
         inflate(getContext(), R.layout.finest_webview, this);
-//        webView = findViewById(R.id.webView);
+        webView = (WebView) findViewById(R.id.webView);
+        divider = findViewById(R.id.divider);
+        gradient = findViewById(R.id.gradient);
     }
 }

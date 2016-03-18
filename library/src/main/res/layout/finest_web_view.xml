@@ -9,7 +9,7 @@
     android:background="@color/finestWhite"
     tools:context=".MainActivity">
 
-    <com.thefinestartist.finestwebview.views.CustomSwipeToRefresh
+    <com.thefinestartist.finestwebview.views.WebViewSwipeToRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-    </com.thefinestartist.finestwebview.views.CustomSwipeToRefresh>
+    </com.thefinestartist.finestwebview.views.WebViewSwipeToRefreshLayout>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"

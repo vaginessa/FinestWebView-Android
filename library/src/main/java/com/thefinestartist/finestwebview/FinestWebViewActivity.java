@@ -53,8 +53,9 @@ import com.thefinestartist.finestwebview.helpers.ColorHelper;
 import com.thefinestartist.finestwebview.helpers.TypefaceHelper;
 import com.thefinestartist.finestwebview.helpers.UrlParser;
 import com.thefinestartist.finestwebview.listeners.BroadCastManager;
-import com.thefinestartist.finestwebview.views.CustomSwipeToRefresh;
 import com.thefinestartist.finestwebview.views.ShadowLayout;
+import com.thefinestartist.finestwebview.views.WebViewSwipeToRefreshLayout;
+import com.thefinestartist.utils.etc.APILevel;
 import com.thefinestartist.utils.service.ClipboardManagerUtil;
 import com.thefinestartist.utils.ui.DisplayUtil;
 import com.thefinestartist.utils.ui.ViewUtil;
@@ -372,7 +373,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
     protected AppCompatImageButton forward;
     protected AppCompatImageButton more;
 
-    protected CustomSwipeToRefresh swipeRefreshLayout;
+    protected WebViewSwipeToRefreshLayout swipeRefreshLayout;
     protected WebView webView;
 
     protected View gradient;
@@ -411,7 +412,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
         forward = (AppCompatImageButton) findViewById(R.id.forward);
         more = (AppCompatImageButton) findViewById(R.id.more);
 
-        swipeRefreshLayout = (CustomSwipeToRefresh) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout = (WebViewSwipeToRefreshLayout) findViewById(R.id.swipeRefreshLayout);
 
         gradient = findViewById(R.id.gradient);
         divider = findViewById(R.id.divider);
@@ -517,7 +518,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
         }
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint({"SetJavaScriptEnabled"})
     protected void initializeViews() {
         setSupportActionBar(toolbar);
 
@@ -761,7 +762,7 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
             GradientDrawable drawable = new GradientDrawable();
             drawable.setCornerRadius(getResources().getDimension(R.dimen.defaultMenuCornerRadius));
             drawable.setColor(menuColor);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            if (APILevel.require(16))
                 menuBackground.setBackground(drawable);
             else
                 menuBackground.setBackgroundDrawable(drawable);
